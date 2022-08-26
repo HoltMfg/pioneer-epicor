@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <style>
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,400i,700");
+*, *::after, *::before{
+  margin: 0;
+  padding: 0;
+  box-sizing:border-box;
+}
+body{
+  font-family: "Poppins", sans-serif;
+}
+    body, p, input, label {
+  font-size: 18px;
+}
+@media screen and (min-width: 320px) {
+  body, p, input, label  {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  body, p, input, label  {
+    font-size: 24px;
+  }
+}
+div.c{
+  position: relative;
+  margin:1em;
+}
+input{
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity:0;
+  visibility: 0;
+}
+    h2 {
+  margin: auto;
+  width: 90%;
+  text-align: center;
+
+  padding: 10px;
+}
+    
+    h1{
+//  font-size: 5vw;
+  
+  background: #D1DEE3;
+  color:black;
+  padding:.5em;
+  position: relative;
+}
+label::before{
+  content:"";
+  display: inline-block;
+  border: 15px solid transparent;
+  border-left:20px solid #619FBC;
+}
+label{
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+div.p{
+  max-height:0px;
+  overflow: hidden;
+  transition:max-height 0.5s;
+  background-color: white;
+  box-shadow:0 0 10px 0 rgba(0, 0, 0, 0.2);
+}
+div.p p {
+  padding:1em;
+}
+input:checked ~ h1 label::before{
+  border-left:15px solid transparent;
+  border-top:20px solid #619FBC;
+  margin-top:12px;
+  margin-right:10px;
+}
+input:checked ~ h1 ~ div.p{
+  max-height:200px;
+}
+a, iframe {
+  color:steelblue;
+      margin: 0 auto;
+    width: 90%;
+  text-align: center;
+      display: flex;
+    align-items: center;
+    justify-content: center;
+
+}    
+
+</style>
+</head>
+<body>
+  <h2>Frequently Asked Questions</h2>
+  <div class="faqs">
+  <script>
+var array_of_objects = [{
+  "question": "What is this?",
+  "answer": "A simple accordion"
+}, {
+  "question": "What does it do?",
+  "answer": "It expands when you click on it."
+}, {
+  "question": "What else does it do?",
+  "answer": "Contracts when you click again."
+}]
+
+var newsFeed
+$.get('https://sheets.googleapis.com/v4/spreadsheets/1sbjzG8P4f1T4tipxbT15a2zPTXSHZCnhqwQlg2M3_fM/values/_approved_faqs!A2:B?key=AIzaSyCIvhf1K415cwKoG1VR3rJ2vIs4C-M68ms', function(data){
+  var newsData = data.values;
+  var firstNews = newsData[0][1];
+  newsFeed = []
+  newsData.forEach(function(value) {
+    var newitems={};
+    newitems.questions = value[0];
+    newitems.answers = value[1];
+    newsFeed.push(newitems);
+  });
+//  var faqs = JSON.stringify(newsFeed)
+  iterate(newsFeed);
+});
+  
+function iterate(arr) {
+  var faq_n = 0;
+  arr.forEach(i => {
+    faq_n++;
+    var faq_q = i.questions;
+    var faq_a = i.answers;
+    var str = `<div class="c">
+  <input type="checkbox" id="faq-${faq_n}">
+  <h1><label for="faq-${faq_n}">${faq_q}</label></h1>
+  <div class="p">
+    <p>${faq_a}</p>
+  </div>
+</div>`
+    $(".faqs").append(str);
+  });
+};
+
+
+
+</script>
+  </div>
+  <div>
+
+  </div>
+  <iframe src="https://app.smartsheet.com/b/form/cbae30ef3c7e4923818ea50b4d19a0c8" width="640" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+</body>
+</html>
