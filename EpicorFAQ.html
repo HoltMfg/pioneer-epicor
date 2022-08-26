@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html>
 <head>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -11,25 +11,22 @@
 }
 body{
   font-family: "Poppins", sans-serif;
-
-}
-
-.css-g2dwen {
-  justify-content: center; !important
+  //background: #000000;
 }
     body, p, input, label {
   font-size: 18px;
+}
+    @media screen and (min-width: 1000px) {
+  body, p, input, label  {
+    font-size: 24px;
+  }
 }
 @media screen and (min-width: 320px) {
   body, p, input, label  {
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   }
 }
-@media screen and (min-width: 1000px) {
-  body, p, input, label  {
-    font-size: 24px;
-  }
-}
+
 div.c{
   position: relative;
   margin:1em;
@@ -47,13 +44,10 @@ input{
   margin: auto;
   width: 90%;
   text-align: center;
-
   padding: 10px;
 }
     
     h1{
-
-  
   background: #D1DEE3;
   color:black;
   padding:.5em;
@@ -91,17 +85,8 @@ input:checked ~ h1 ~ div.p{
   max-height:200px;
 }
 div.iframe {
-  color:steelblue;
       margin: 0 auto;
-    width: 90%;
-  text-align: center;
-      display: flex;
-    align-items: center;
-    justify-content: center;
-
 }    
-
-
 </style>
 </head>
 <body>
@@ -110,22 +95,12 @@ div.iframe {
   <h2>Frequently Asked Questions</h2>
   <div class="faqs">
   <script>
-var array_of_objects = [{
-  "question": "What is this?",
-  "answer": "A simple accordion"
-}, {
-  "question": "What does it do?",
-  "answer": "It expands when you click on it."
-}, {
-  "question": "What else does it do?",
-  "answer": "Contracts when you click again."
-}]
 
 var newsFeed
 $.get('https://sheets.googleapis.com/v4/spreadsheets/1sbjzG8P4f1T4tipxbT15a2zPTXSHZCnhqwQlg2M3_fM/values/_approved_faqs!A2:B?key=AIzaSyCIvhf1K415cwKoG1VR3rJ2vIs4C-M68ms', function(data){
   var newsData = data.values;
   var firstNews = newsData[0][1];
-  newsFeed = []
+  newsFeed = [];
   newsData.forEach(function(value) {
     var newitems={};
     newitems.questions = value[0];
@@ -152,20 +127,11 @@ function iterate(arr) {
     $(".faqs").append(str);
   });
 };
-
-
-
 </script>
   </div>
   <div>
-
-  </div>
-  <div>
     <div align="center">
-      <br>
-      <h3>Don't see the answer you are looking for?</h3>
-    
- <iframe src="https://app.smartsheet.com/b/form/cbae30ef3c7e4923818ea50b4d19a0c8" width="640" height="900" frameborder="0" marginheight="0" marginwidth="0" align="center">Loading…</iframe>
+ <iframe src="https://app.smartsheet.com/b/form/cbae30ef3c7e4923818ea50b4d19a0c8" width="400" height="900" frameborder="0" marginheight="0" marginwidth="0" align="center">Loading…</iframe>
      </div>
      </div>
 </body>
