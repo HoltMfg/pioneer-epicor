@@ -26,7 +26,6 @@ body{
     font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   }
 }
-
 div.c{
   position: relative;
   margin:1em;
@@ -46,7 +45,6 @@ input{
   text-align: center;
   padding: 10px;
 }
-    
     h1{
   background: #D1DEE3;
   color:black;
@@ -95,7 +93,6 @@ div.iframe {
   <h2>Frequently Asked Questions</h2>
   <div class="faqs">
   <script>
-
 var newsFeed
 $.get('https://sheets.googleapis.com/v4/spreadsheets/1sbjzG8P4f1T4tipxbT15a2zPTXSHZCnhqwQlg2M3_fM/values/_approved_faqs!A2:B?key=AIzaSyCIvhf1K415cwKoG1VR3rJ2vIs4C-M68ms', function(data){
   var newsData = data.values;
@@ -110,7 +107,6 @@ $.get('https://sheets.googleapis.com/v4/spreadsheets/1sbjzG8P4f1T4tipxbT15a2zPTX
 //  var faqs = JSON.stringify(newsFeed)
   iterate(newsFeed);
 });
-  
 function iterate(arr) {
   var faq_n = 0;
   arr.forEach(i => {
